@@ -60,6 +60,10 @@ get '/details/:post_id' do
 	results = @db.execute 'select * from Posts where id = ?', [post_id]
 	#Выбираем один пост в переменную row
 	@row = results[0] #choise one first element array results first row (strochka)
+	
+	#Выбираем комментарии
+	@comments = @db.execute 'select * from Comments where post_id = ? order by id', [post_id]
+
 	#Возвращаем представление 
 	erb :details
 end
