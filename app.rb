@@ -46,8 +46,13 @@ post '/new' do
 	redirect to '/'
 end
 get '/details/:post_id' do 
+	#Получаем переменною из url
 	post_id = params[:post_id]
+	#Получаем список постов
+	#(у нас будет тллько один пост)
 	results = @db.execute 'select * from Posts where id = ?', [post_id]
+	#Выбираем один пост в переменную row
 	@row = results[0] #choise one first element array results first row (strochka)
+	#Возвращаем представление 
 	erb :details
 end
