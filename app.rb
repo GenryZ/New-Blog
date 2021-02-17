@@ -27,11 +27,17 @@ end
 get '/' do
 	erb "Hello <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
 end
+
 get '/new' do 
 	erb :new
 end
+
 post '/new' do
 
   	content = params[:content]
+  	if content.length <= 0 
+  		@error = "Type post text"
+  		return erb :new
+  	end
   	erb "You typed #{content}"
 end
