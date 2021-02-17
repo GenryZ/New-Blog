@@ -45,3 +45,7 @@ post '/new' do
 #Redirect on main paig 
 	redirect to '/'
 end
+get '/details/:post_id' do 
+	post_id = params[:post_id]
+	erb "Displaying info for post with id #{post_id}"
+end
