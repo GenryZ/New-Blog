@@ -56,3 +56,11 @@ get '/details/:post_id' do
 	#Возвращаем представление 
 	erb :details
 end
+
+#Обработчик пост-запроса details
+post '/details/:post_id' do 
+	post_id = params[:post_id]
+	content = params[:content]
+	erb "You typed comment #{content} for post #{post_id}"
+end
+
